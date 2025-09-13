@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Background Image Slideshow */
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            animation: backgroundSlideshow 12s infinite linear;
+        }
+
+        @keyframes backgroundSlideshow {
+            0%   { background-image: url('{{ url_for("static", filename="images/gym1.jpeg") }}'); }
+            25%  { background-image: url('{{ url_for("static", filename="images/gym2.jpeg") }}'); }
+            50%  { background-image: url("https://images.unsplash.com/photo-1434596922112-19c563067271?w=700&auto=format&fit=crop&q=60"); }
+            75%  { background-image: url("https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?w=700&auto=format&fit=crop&q=60"); }
+            100% { background-image: url("https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=700&auto=format&fit=crop&q=60"); }
+        }
+
+        /* Title Box */
+        .title-box {
+            width: 40%;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        h1 {
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Recommendation Boxes */
+        .recommendation-box {
+            width: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Section Titles */
+        h2 {
+            font-size: 22px;
+            color: brown;
+            text-decoration: underline;
+            text-decoration-color: white;
+            margin-bottom: 10px;
+        }
+
+        /* Text Styling */
+        p {
+            font-size: 18px;
+            color: black;
+            margin: 5px 0;
+        }
+
+        /* Go Back Button */
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Customer Support Button */
+        .customer-support {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .customer-support a {
+            text-decoration: none;
+            font-weight: bold;
+            color: yellow;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 2; transform: translateY(-20px); }
+            to { opacity: 4; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Slideshow -->
+    <div class="bg-container"></div>
+
+    <!-- Customer Support Button -->
+    <div class="customer-support">
+        <a href="tel:+918688662264">📞 Customer Support: +91 86886622</a>
+    </div>
+
+    <!-- Title -->
+    <div class="title-box">
+        <h1>Recommended Gym Plan</h1>
+    </div>
+
+    <!-- Recommendation Sections -->
+    <div class="recommendation-box">
+        <h2>🏋️ Exercises</h2>
+        <p>{{ exercises }}</p>
+    </div>
+
+    <div class="recommendation-box">
+        <h2>🥗 Diet</h2>
+        <p>{{ diet }}</p>
+    </div>
+
+    <div class="recommendation-box">
+        <h2>🎯 Equipment</h2>
+        <p>{{ equipment }}</p>
+    </div>
+
+    <!-- Go Back Button -->
+    <a href="/">Go Back</a>
+
+</body>
+</html>

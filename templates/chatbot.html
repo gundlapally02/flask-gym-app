@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        /* Background Slideshow */
+        @keyframes bgChange {
+            0% { background-image: url('https://images.unsplash.com/photo-1487956382158-bb926046304a?q=80&w=2342&auto=format&fit=crop'); }
+            33% { background-image: url('https://img.freepik.com/free-photo/health-wellness-diet-exercise-organic-concept_53876-133909.jpg?t=st=1741521402'); }
+            66% { background-image: url('https://img.freepik.com/free-photo/fitness-body-builder-challenge_53876-121379.jpg?t=st=1741521429'); }
+            100% { background-image: url('https://img.freepik.com/free-photo/fitness-body-builder-challenge_53876-122419.jpg?t=st=1741521463'); }
+        }
+        body {
+            animation: bgChange 12s infinite linear;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Chat Container */
+        .container {
+            width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 1s ease-in-out;
+        }
+        /* Chatbox */
+        .chat-box {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        /* Input and Button */
+        input, button {
+            width: 90%;
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        /* Customer Support */
+        .support {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="support">
+        <a href="tel:+918688662264" style="text-decoration: none; color: blue;">
+            📞 Customer Support: +91 86886622
+        </a>
+    </div>
+    
+    <div class="container">
+        <h2>AI Chatbot 🤖</h2>
+        <div class="chat-box" id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Ask something...">
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            let input = document.getElementById("user-input").value;
+            let chatBox = document.getElementById("chat-box");
+            if (input.trim() === "") return;
+            
+            chatBox.innerHTML += "<p><strong>You:</strong> " + input + "</p>";
+            
+            fetch("/chat_response", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: input })
+            })
+            .then(response => response.json())
+            .then(data => {
+                chatBox.innerHTML += "<p><strong>Bot:</strong> " + data.reply + "</p>";
+                document.getElementById("user-input").value = "";
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+        }
+
+        function goBack() {
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>

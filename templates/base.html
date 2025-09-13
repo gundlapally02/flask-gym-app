@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gym Website{% endblock %}</title>
+</head>
+<body>
+
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <a href="tel:{{ customer_number }}" style="text-decoration: none; font-weight: bold; color: blue;">
+            📞 Customer Support: {{ customer_number }}
+        </a>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

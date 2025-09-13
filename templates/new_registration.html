@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Registration</title>
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1487956382158-bb926046304a?q=80&w=2342&auto=format&fit=crop">
+<link rel="preload" as="image" href="https://img.freepik.com/free-photo/health-wellness-diet-exercise-organic-concept_53876-133909.jpg?w=2000">
+<link rel="preload" as="image" href="https://img.freepik.com/free-photo/fitness-body-builder-challenge_53876-121379.jpg?w=2000">
+<link rel="preload" as="image" href="https://img.freepik.com/free-photo/fitness-body-builder-challenge_53876-122419.jpg?w=2000">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: backgroundSlideshow 12s infinite alternate;
+}
+
+@keyframes backgroundSlideshow {
+    0%   { background-image: url('https://images.unsplash.com/photo-1487956382158-bb926046304a?q=80&w=2342&auto=format&fit=crop'); }
+    25%  { background-image: url('https://img.freepik.com/free-photo/health-wellness-diet-exercise-organic-concept_53876-133909.jpg?w=2000'); }
+    50%  { background-image: url('https://img.freepik.com/free-photo/fitness-body-builder-challenge_53876-121379.jpg?w=2000'); }
+    75%  { background-image: url('https://img.freepik.com/free-photo/fitness-body-builder-challenge_53876-122419.jpg?w=2000'); }
+    100% { background-image: url('https://images.unsplash.com/photo-1487956382158-bb926046304a?q=80&w=2342&auto=format&fit=crop'); }
+}
+
+        .container {
+            width: 350px;
+            padding: 30px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeIn 1s ease-in-out forwards;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: black;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        input {
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.5);
+            color: black;
+        }
+
+        input::placeholder {
+            font-size: 18px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .customer-support {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .customer-support a {
+            text-decoration: none;
+            font-weight: bold;
+            color: yellow;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="customer-support">
+        <a href="tel:+918688662264">📞 Customer Support: +91 8688662264</a>
+    </div>
+
+    <div class="container">
+        <h2>New Registration</h2>
+        <form action="/new_registration" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Next</button>
+        </form>
+    </div>
+</body>
+</html>
