@@ -43,7 +43,7 @@ class User(db.Model):
     reset_token = db.Column(db.String(100), unique=True)
 
 # Load Data
-file_path = "gym recommendation.xlsx"
+file_path = os.path.join(BASE_DIR, "gym_recommendation.xlsx")
 if os.path.exists(file_path):
     data = pd.read_excel(file_path)
     data.drop(columns=['ID'], inplace=True, errors='ignore')
